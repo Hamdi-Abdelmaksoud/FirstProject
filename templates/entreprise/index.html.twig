@@ -4,9 +4,11 @@
 
 {% block body %}
  <h1>Liste des entreprises</h1>
- <p>hello {{ name}}</p>
-
- {%for li in tableau %}
- {{li}} <br>
+ {% for entreprise in entreprises %}
+ {#{entreprise.raisonSociale ~'('~ entreprise.ville~')'}#}
+ {#or utilisé une méthode tostring {{entreprise}}#}
+ {{entreprise.raisonSociale}} ({{entreprise.ville}}) <br>
  {% endfor %}
+    
+
 {% endblock %}

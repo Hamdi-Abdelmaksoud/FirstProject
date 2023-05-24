@@ -3,5 +3,10 @@
 {% block title %}Hello EmployeController!{% endblock %}
 
 {% block body %}
- 
+<h1>liste des employes</h1>
+{% for employe in employes %}
+{{employe}}<br>
+{% endfor %}
+    
+
 {% endblock %}
