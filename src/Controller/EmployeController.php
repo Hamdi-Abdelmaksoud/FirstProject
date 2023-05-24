@@ -11,9 +11,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class EmployeController extends AbstractController
 {
     #[Route('/employe', name: 'app_employe')]
-    public function index(ManagerRegistry $doctrine): Response
+    /*public function index(ManagerRegistry $doctrine): Response
     {
         $employes=$doctrine->getRepository(Employe::class)->findAll();
+        return $this->render('employe/index.html.twig', [
+            'employes' => $employes
+        ]);
+    }*/
+    public function index(ManagerRegistry $doctrine): Response
+    {
+        $employes=$doctrine->getRepository(Employe::class)->findBy(["ville"=>"Strasbourg"],['nom'=>"ASC"]);
         return $this->render('employe/index.html.twig', [
             'employes' => $employes
         ]);
