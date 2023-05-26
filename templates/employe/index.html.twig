@@ -5,8 +5,11 @@
 {% block body %}
 <h1>liste des employes</h1>
 {% for employe in employes %}
-{{employe}}<br>
+{#show_employe root name et idEmp from root#}
+<a href="{{ path("show_employe",{"id": employe})}}">{{employe}}</a><br>
+ 
 {% endfor %}
     
 
 {% endblock %}
+
