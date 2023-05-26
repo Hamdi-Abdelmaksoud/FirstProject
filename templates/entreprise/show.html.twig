@@ -10,6 +10,14 @@
 {#faull adresse function in entreprise entité qui renvoie l'adresse compléte#}
  adresse: {{entreprise.FullAdresse}}
 </p>
+<h2>Listes de employés</h2>
+{% for employe in entreprise.employes %}
+{% if entreprise.employes | length==0%}
+<p>pas d'employer dans l'entreprise</p>    
+{% else %}
+ <a href="{{ path("show_employe",{"id":employe.id})}}">{{employe}}</a><br>
 
+{% endif %}
+{% endfor %}
 
 {% endblock %}
