@@ -131,7 +131,7 @@ class Entreprise
 
     public function removeEmploye(Employe $employe): self
     {
-        if ($this->employes->removeElement($employe)) {
+         if ($this->employes->removeElement($employe)) {
             // set the owning side to null (unless already changed)
             if ($employe->getEntreprise() === $this) {
                 $employe->setEntreprise(null);

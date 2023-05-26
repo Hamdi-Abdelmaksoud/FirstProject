@@ -16,12 +16,16 @@ class EntrepriseType extends AbstractType
     {
         $builder
             ->add('raisonSociale',TextType::class)
-            ->add('dateCreation',DateType::class)
+            ->add('dateCreation',DateType::class,['widget'=>'single_text'])//calendrier
             ->add('adresse',TextType::class)
             ->add('cp',TextType::class)
             ->add('ville',TextType::class)
-            ->add('siret',TextType::class)
-            ->add('submit',SubmitType::class)
+            ->add('siret',TextType::class,[
+                'attr'=>['class'=>"form-control "]
+            ])
+            ->add('submit',SubmitType::class,[
+                'attr'=>['class'=>'btn btn-secondary']//ajout attribut class
+            ])
         ;
     }
 

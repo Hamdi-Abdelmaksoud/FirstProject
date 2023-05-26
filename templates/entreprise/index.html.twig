@@ -4,6 +4,7 @@
 
 {% block body %}
  <h1>Liste des entreprises</h1>
+ <a class="btn btn-primary" href="{{path('add_entreprise')}}">ajouter une entreprise</a><br>
  {% for entreprise in entreprises %}
  {#{entreprise.raisonSociale ~'('~ entreprise.ville~')'}#}
  {#or utilisé une méthode tostring {{entreprise}}#}

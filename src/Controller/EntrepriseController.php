@@ -32,7 +32,7 @@ class EntrepriseController extends AbstractController
 
         if($form->isSubmitted()&& $form->isValid())
         {
-            $entreprie=$form->getData();
+            $entreprise=$form->getData();
             //getManager() pour accéeder au persiste et flush.
             $entityManager=$doctrine->getManager();
             //prepare
