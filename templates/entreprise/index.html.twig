@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EntrepriseController!{% endblock %}
+{% block title %}Hello Entreprise Controller!{% endblock %}
 
 {% block body %}
  <h1>Liste des entreprises</h1>
  {% for entreprise in entreprises %}
  {#{entreprise.raisonSociale ~'('~ entreprise.ville~')'}#}
  {#or utilisé une méthode tostring {{entreprise}}#}
- {{entreprise.raisonSociale}} ({{entreprise.ville}}) <br>
+ <a href="{{path('show_entreprise',{'id':entreprise.id}) }}">{{entreprise.raisonSociale}}</a> ({{entreprise.ville}}) <br>
  {% endfor %}
     
 

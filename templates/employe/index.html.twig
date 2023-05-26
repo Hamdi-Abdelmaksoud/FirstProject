@@ -6,8 +6,8 @@
 <h1>liste des employes</h1>
 {% for employe in employes %}
 {#show_employe root name et idEmp from root#}
-<a href="{{ path("show_employe",{"id": employe})}}">{{employe}}</a><br>
- 
+<a href="{{ path("show_employe",{"id":employe.id})}}">{{employe}}</a><br>
+  
 {% endfor %}
     
 

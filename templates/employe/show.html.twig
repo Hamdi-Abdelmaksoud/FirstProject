@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}détails employé{% endblock %}
+
+{% block body %}
+ 
+<h1>{{employe}}</h1>{#employe va nous donner que le nom et prenom suivant la méthode tostring dans l'entité #}
+<p>
+    {{employe.ville}}
+    {{employe.entreprise}}
+    {# employe.entreprise foreignkey renvoi le méthode to string entite entreprise #}
+</p>
+    
+
+{% endblock %}
