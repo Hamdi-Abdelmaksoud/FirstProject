@@ -4,12 +4,12 @@
 
 {% block body %}
     <h1>{{ entreprise }}</h1>
-    
-<p>ville:{{entreprise.ville}}
+    <p>siret : {{entreprise.siret}}</p>
+<p>date de création:{{entreprise.dateCreation | date('d-m-y')}} <br>
+
+{#faull adresse function in entreprise entité qui renvoie l'adresse compléte#}
+ adresse: {{entreprise.FullAdresse}}
 </p>
- <p> adresse: {{entreprise.adresse}}
-</p>
-<p>cp:{{entreprise.cp}}
-</p>
+
 
 {% endblock %}
