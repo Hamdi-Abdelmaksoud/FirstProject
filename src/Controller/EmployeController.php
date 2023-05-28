@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Employe;
+use App\Form\EmployeType;
 use Doctrine\Persistence\ManagerRegistry;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +14,29 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EmployeController extends AbstractController
 {
+    #[Route('/employe/add', name: 'add_employe')]  
+    public function add(ManagerRegistry $doctrine,Employe $employe=null,Request $request):Response
+    {
+        /*entrepriseType from form  entreprise, $entreprise en paramétres*/
+        $form=$this->createForm(EmployeType::class,$employe);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()&& $form->isValid())
+        {
+            $employe=$form->getData();
+            //getManager() pour accéeder au persiste et flush.
+            $entityManager=$doctrine->getManager();
+            //prepare
+            $entityManager->persist($employe);
+            //insert into (excute)
+            $entityManager->flush();
+        return $this->redirectToRoute('app_employe');
+
+        }
+        return $this->render('employe/add.html.twig',[
+          'formAddEmploye'=>$form->createView()  
+        ]);
+    }
     #[Route('/employe/{id}', name: 'show_employe')]
     public function show(Employe $employe): Response
     {
