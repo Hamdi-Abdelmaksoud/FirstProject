@@ -9,7 +9,9 @@
  {#{entreprise.raisonSociale ~'('~ entreprise.ville~')'}#}
  {#or utilisé une méthode tostring {{entreprise}}#}
  <a href="{{path('show_entreprise',{'id':entreprise.id}) }}">{{entreprise}}</a>
- <a class="btn btn-warning" href="{{path('edit_entreprise',{'id':entreprise.id}) }}">edit</a> <br>
+ <a class="btn btn-warning" href="{{path('edit_entreprise',{'id':entreprise.id}) }}">edit</a> 
+   <a class="btn btn-danger" href="{{path('delete_entreprise',{'id':entreprise.id}) }}">delete</a> <br>
+
  {% endfor %}
     
 

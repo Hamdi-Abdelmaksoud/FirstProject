@@ -14,6 +14,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EmployeController extends AbstractController
 {
+  
+  
+  
+  
+    #[Route('/employe/{id}/delete', name: 'delete_employe')]
+public function delete (ManagerRegistry $doctrine,  Employe $employe):Response
+{
+$entityManager=$doctrine->getManager();
+$entityManager->remove($employe);
+$entityManager->flush();//execute la requete
+return $this->redirectToRoute('app_employe');//retourner à la liste d'employer
+}
+  
     #[Route('/employe/add', name: 'add_employe')]
     #[Route('/employe/edit', name: 'edit_employe')]
     public function add(ManagerRegistry $doctrine, Employe $employe = null, Request $request): Response

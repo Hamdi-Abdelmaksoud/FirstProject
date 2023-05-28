@@ -12,6 +12,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EntrepriseController extends AbstractController
 {
+    #[Route('/entreprise/{id}/delete', name: 'delete_entreprise')]
+    public function delete (ManagerRegistry $doctrine,  Entreprise $entreprise):Response
+    {
+    $entityManager=$doctrine->getManager();
+    $entityManager->remove($entreprise);
+    $entityManager->flush();//execute la requete
+    return $this->redirectToRoute('app_entreprise');//retourner à la liste d'employer
+    }
     #[Route('/entreprise', name: 'app_entreprise')]
     public function index(ManagerRegistry $doctrine): Response
     {
