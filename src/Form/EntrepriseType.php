@@ -15,18 +15,17 @@ class EntrepriseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('raisonSociale',TextType::class)
-            ->add('dateCreation',DateType::class,['widget'=>'single_text'])//calendrier
-            ->add('adresse',TextType::class)
-            ->add('cp',TextType::class)
-            ->add('ville',TextType::class)
-            ->add('siret',TextType::class,[
-                'attr'=>['class'=>"form-control "]
+            ->add('raisonSociale', TextType::class)
+            ->add('dateCreation', DateType::class, ['widget' => 'single_text']) //calendrier
+            ->add('adresse', TextType::class)
+            ->add('cp', TextType::class)
+            ->add('ville', TextType::class)
+            ->add('siret', TextType::class, [
+                'attr' => ['class' => "form-control "]
             ])
-            ->add('submit',SubmitType::class,[
-                'attr'=>['class'=>'btn btn-secondary']//ajout attribut class
-            ])
-        ;
+            ->add('submit', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-secondary'] //ajout attribut class
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

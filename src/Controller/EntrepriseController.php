@@ -21,39 +21,39 @@ class EntrepriseController extends AbstractController
             "entreprises" => $entreprises
         ]);
     }
-  
-    #[Route('/entreprise/add', name: 'add_entreprise')]  
+
+    #[Route('/entreprise/add', name: 'add_entreprise')]
+    #[Route('/entreprise/{id}/edit', name: 'edit_entreprise')]
     /* ManagerRegistry pour intéragir avec la base de données entreprise type elemnt*/
-    public function add(ManagerRegistry $doctrine,Entreprise $entreprise=null,Request $request):Response
+    public function add(ManagerRegistry $doctrine, Entreprise $entreprise = null, Request $request): Response
     {
+        if (!$entreprise) {
+            $entreprise = new Entreprise;
+        }
         /*entrepriseType from form  entreprise, $entreprise en paramétres*/
-        $form=$this->createForm(EntrepriseType::class,$entreprise);
+        $form = $this->createForm(EntrepriseType::class, $entreprise);
         $form->handleRequest($request);
 
-        if($form->isSubmitted()&& $form->isValid())
-        {
-            $entreprise=$form->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entreprise = $form->getData();
             //getManager() pour accéeder au persiste et flush.
-            $entityManager=$doctrine->getManager();
+            $entityManager = $doctrine->getManager();
             //prepare
             $entityManager->persist($entreprise);
             //insert into (excute)
             $entityManager->flush();
-        return $this->redirectToRoute('app_entreprise');
-
+            return $this->redirectToRoute('app_entreprise');
         }
-        return $this->render('entreprise/add.html.twig',[
-          'formAddEntreprise'=>$form->createView()  
+        return $this->render('entreprise/add.html.twig', [
+            'formAddEntreprise' => $form->createView()
         ]);
-
     }
     #[Route('/entreprise/{id}', name: 'show_entreprise')]
     public function show(Entreprise $entreprise): Response
     {
-       
+
         return $this->render('entreprise/show.html.twig', [
             'entreprise' => $entreprise
         ]);
-      
-}
+    }
 }

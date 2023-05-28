@@ -14,27 +14,25 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EmployeController extends AbstractController
 {
-    #[Route('/employe/add', name: 'add_employe')]  
-    public function add(ManagerRegistry $doctrine,Employe $employe=null,Request $request):Response
+    #[Route('/employe/add', name: 'add_employe')]
+    public function add(ManagerRegistry $doctrine, Employe $employe = null, Request $request): Response
     {
         /*entrepriseType from form  entreprise, $entreprise en paramétres*/
-        $form=$this->createForm(EmployeType::class,$employe);
+        $form = $this->createForm(EmployeType::class, $employe);
         $form->handleRequest($request);
 
-        if($form->isSubmitted()&& $form->isValid())
-        {
-            $employe=$form->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $employe = $form->getData();
             //getManager() pour accéeder au persiste et flush.
-            $entityManager=$doctrine->getManager();
+            $entityManager = $doctrine->getManager();
             //prepare
             $entityManager->persist($employe);
             //insert into (excute)
             $entityManager->flush();
-        return $this->redirectToRoute('app_employe');
-
+            return $this->redirectToRoute('app_employe');
         }
-        return $this->render('employe/add.html.twig',[
-          'formAddEmploye'=>$form->createView()  
+        return $this->render('employe/add.html.twig', [
+            'formAddEmploye' => $form->createView()
         ]);
     }
     #[Route('/employe/{id}', name: 'show_employe')]
@@ -45,7 +43,6 @@ class EmployeController extends AbstractController
         return $this->render('employe/show.html.twig', [
             'employe' => $employe
         ]);
-        
     }
     #[Route('/employe', name: 'app_employe')]
     /*public function index(ManagerRegistry $doctrine): Response
@@ -61,5 +58,5 @@ class EmployeController extends AbstractController
         return $this->render('employe/index.html.twig', [
             'employes' => $employes
         ]);
-    } 
+    }
 }
