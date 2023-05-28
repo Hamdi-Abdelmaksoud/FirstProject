@@ -15,8 +15,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class EmployeController extends AbstractController
 {
     #[Route('/employe/add', name: 'add_employe')]
+    #[Route('/employe/edit', name: 'edit_employe')]
     public function add(ManagerRegistry $doctrine, Employe $employe = null, Request $request): Response
     {
+        if(!$employe){
+            $employe=new Employe();
+        }
         /*entrepriseType from form  entreprise, $entreprise en paramétres*/
         $form = $this->createForm(EmployeType::class, $employe);
         $form->handleRequest($request);

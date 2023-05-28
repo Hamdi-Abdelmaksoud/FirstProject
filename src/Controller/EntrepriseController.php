@@ -27,7 +27,7 @@ class EntrepriseController extends AbstractController
     /* ManagerRegistry pour intéragir avec la base de données entreprise type elemnt*/
     public function add(ManagerRegistry $doctrine, Entreprise $entreprise = null, Request $request): Response
     {
-        if (!$entreprise) {
+        if (!$entreprise)/*si entreprise n'existe pas formulaire ajout sinon édit  */ {
             $entreprise = new Entreprise;
         }
         /*entrepriseType from form  entreprise, $entreprise en paramétres*/
