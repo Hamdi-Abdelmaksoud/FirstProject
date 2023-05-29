@@ -53,7 +53,8 @@ class EntrepriseController extends AbstractController
             return $this->redirectToRoute('app_entreprise');
         }
         return $this->render('entreprise/add.html.twig', [
-            'formAddEntreprise' => $form->createView()
+            'formAddEntreprise' => $form->createView(),
+        'edit'=>$entreprise->getId()//si entreprise existe edit sinonn ajout pour afficher editer ou ajouter à la vue
         ]);
     }
     #[Route('/entreprise/{id}', name: 'show_entreprise')]

@@ -49,9 +49,11 @@ return $this->redirectToRoute('app_employe');//retourner à la liste d'employer
             return $this->redirectToRoute('app_employe');
         }
         return $this->render('employe/add.html.twig', [
-            'formAddEmploye' => $form->createView()
+            'formAddEmploye' => $form->createView(),
+            'edit'=>$employe->getId()//si employe existe edit sinon ajout pour afficher editer ou ajouter à la vue
+
         ]);
-    }
+         }
     #[Route('/employe/{id}', name: 'show_employe')]
     public function show(Employe $employe): Response
     {
