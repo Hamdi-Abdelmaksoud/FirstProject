@@ -8,7 +8,19 @@
 {% endif %}
 
  {#form() fontion en twig   formAddEntreprise écuppérer du conrollerr#}
-    {{form(formAddEmploye)}}
-
+    {#{form(formAddEmploye)}#}
+    {{ form_start(formAddEmploye) }}
+   
+    <div class="nomPrenom">
+    {{ form_row(formAddEmploye.nom) }}
+    {{ form_row(formAddEmploye.prenom) }}
+    </div>
+    <div>
+    {{ form_row(formAddEmploye.dateEmbauche) }}
+    {{ form_row(formAddEmploye.ville) }}
+    {{ form_row(formAddEmploye.entreprise) }}
+    {{ form_row(formAddEmploye.submit) }}
+</div>
+{{ form_end(formAddEmploye) }}
  {% endblock %}
  
